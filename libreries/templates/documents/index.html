@@ -1,0 +1,68 @@
+{%extends "view.html"%} {%block title%} Lista de documentos {%endblock%} {%
+block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="card">
+      <div class="card-header">
+        <a
+          name=""
+          id=""
+          class="btn btn-success"
+          href="{% url 'create'%}"
+          role="button"
+          >Agregar documento</a
+        >
+      </div>
+      <div class="card-body">
+        <h4 class="card-title">Documetos</h4>
+
+        <div class="table-responsive">
+          <table class="table table-primary">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Titulo</th>
+                <th scope="col">Imagen</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for document in documents %}
+              <tr class="">
+                <td scope="row">{{ document.id }}</td>
+                <td>{{ document.title }}</td>
+                <td>
+                  <img src="{{ document.image.url }}" height="100" alt="" />
+                </td>
+                <td>{{ document.description }}</td>
+                <td>
+                  <a
+                    name=""
+                    id=""
+                    class="btn btn-info"
+                    href="{%url 'edit' document.id%}"
+                    role="button"
+                    >Editar</a
+                  >
+                  <a
+                    name=""
+                    id=""
+                    class="btn btn-danger"
+                    href="{%url 'delete' document.id%}"
+                    role="button"
+                    >Borrar</a
+                  >
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    {%endblock%}
+  </div>
+</div>

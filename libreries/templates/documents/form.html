@@ -1,0 +1,37 @@
+<form enctype="multipart/form-data" method="post">
+  {% csrf_token %} {% for dato in form%}
+  <div class="mb-3">
+    <label for="" class="form-label">{{ dato.label}}</label>
+    <br />
+    {% if dato.field.widget.input_type == 'file' and campo.value %}
+    <img
+      src="{{MEDIA_URL}}/images/{{dato.value}}"
+      width="100"
+      srcset=""
+      alt=""
+    />
+    {% endif %}
+
+    <input
+      type="{{ dato.field.widget.input_type}}"
+      class="form-control"
+      name="{{ dato.name}}"
+      id=""
+      aria-describedby="helpId"
+      placeholder="{{ dato.label}}"
+      value="{{ dato.value | default:''}}"
+    />
+  </div>
+  <div class="col-12 help-text">{{ dato.errors }}</div>
+  {%endfor%}
+
+  <input name="" id="" class="btn btn-success" type="submit" value="Enviar" />
+  <a
+    name=""
+    id=""
+    class="btn btn-primary"
+    href="{% url 'documents'%}"
+    role="button"
+    >Salir</a
+  >
+</form>

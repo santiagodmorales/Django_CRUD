@@ -1,0 +1,12 @@
+{%extends "view.html"%} {%block title%} Crear documento {%endblock%} {% block
+content %}
+
+<div class="card">
+  <div class="card-header">Crear documento</div>
+  <div class="card-body">
+    <h4 class="card-title">Datos del documento</h4>
+    {% include 'documents/form.html'%}
+  </div>
+</div>
+
+{%endblock%}
